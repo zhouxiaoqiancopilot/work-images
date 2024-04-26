@@ -1,50 +1,8 @@
-{
-  "presets": [
-    "@babel/preset-react",
-    [
-      "@babel/preset-env",
-      {
-        "useBuiltIns": "entry", // usage-按需引入 entry-入口引入（整体引入） false-不引入polyfill
-        "corejs": 2, // 2-corejs@2  3-corejs@3
-        "modules": false,
-        "targets": {
-          "browsers": [
-            "ie >=10"
-          ]
+fixOrientationchange(window, (meta) => {
+        if (this.config.fullscreen.autoRotation && meta.current === 'landscape' && !this.fullscreen.active) {
+          this.fullscreen.enter();
         }
-      }
-    ]
-  ],
-  "plugins": [
-    [
-      "import",
-      {
-        "libraryName": "zarm",
-        "style": "true"
-      },
-      "zarm"
-    ],
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        "corejs": 2
-      }
-    ],
-    "@babel/plugin-transform-object-assign",
-    [
-      "@babel/plugin-proposal-decorators",
-      {
-        "legacy": true
-      }
-    ],
-    [
-      "@babel/plugin-proposal-class-properties",
-      {
-        "loose": true
-      }
-    ],
-    "@babel/plugin-proposal-export-default-from",
-    "@babel/plugin-proposal-object-rest-spread",
-    "@babel/plugin-proposal-optional-chaining"
-  ]
-}
+        setTimeout(() => {
+          this.watermark.render(this.config.watermark.text);
+        }, 300);
+      });
